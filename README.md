@@ -14,9 +14,9 @@ decayed_learning_rate = learning_rate * decay_rate ^ (global_step / decay_ steps
 
 为了避免过拟合问题， 一个非常常用的方法是正则化。正则化的思想就是在损失函数中加入刻画模型复杂程度的指标。假设用于刻画模型在训数据上表现的损失函数为冽的，那么在优化时不是直接优化冽的，而是优化J（θ）＋ λR(w）。其中R(w） 刻画的是模型的复杂程度，而λ 表示模型复杂损失在总损失中的比例。注意这里θ 表示的是一
 个神经网络中所有的参数，它包括边上的权重w 和偏置项b 。一般来说模型复杂度只由权重 w 决定。常用的刻画模型复杂度的函数R (w） 有两种， 
-一种是LI 正则化，计算公式是：$R(w)=||w||_1=\sum_i|w_i|$
+一种是LI 正则化，计算公式是：<a href="https://www.codecogs.com/eqnedit.php?latex=$R(w)=\left\|w\right\|_1=\sum_i\left|w_i\right|$" target="_blank"><img src="https://latex.codecogs.com/gif.latex?$R(w)=\left\|w\right\|_1=\sum_i\left|w_i\right|$" title="$R(w)=\left\|w\right\|_1=\sum_i\left|w_i\right|$" /></a>
 
-另一种是L2 正则化，计算公式是：$R(w)=||w||_2^2=\sum_i|w_i|^2$
+另一种是L2 正则化，计算公式是：<a href="https://www.codecogs.com/eqnedit.php?latex=$R(w)=\left\|w\right\|_2^2=\sum_i\left|w\right|_^2$" target="_blank"><img src="https://latex.codecogs.com/gif.latex?$R(w)=\left\|w\right\|_2^2=\sum_i\left|w\right|_^2$" title="$R(w)=\left\|w\right\|_2^2=\sum_i\left|w\right|_^2$" /></a>
 
 无论是哪一种正则化方式，基本的思想都是希望通过限制权重的大小，使得模型不能
 任意拟合训练数据中的随机噪音。但这两种正则化的方法也有很大的区别。首先， Ll 正则
@@ -26,7 +26,7 @@ decayed_learning_rate = learning_rate * decay_rate ^ (global_step / decay_ steps
 个参数调整为0 。其次， L I 正则化的计算公式不可导，而L2 正则化公式可导。因为在优
 化时需要计算损失函数的偏导数，所以对含有L2 正则化损失函数的优化要更加简洁。优化
 带L I 正则化的损失函数要更加复杂，而且优化方法也有很多种。在实践中，也可以将LI
-正则化和L2 正则化同时使用：$R(w)=\sum_ia|w_i+(1-a)w_i^2$
+正则化和L2 正则化同时使用：<a href="https://www.codecogs.com/eqnedit.php?latex=$R(w)=\sum_ia\left|w\right|_i&plus;(1-a)w_i^2$" target="_blank"><img src="https://latex.codecogs.com/gif.latex?$R(w)=\sum_ia\left|w\right|_i&plus;(1-a)w_i^2$" title="$R(w)=\sum_ia\left|w\right|_i+(1-a)w_i^2$" /></a>
 
 以下代码给出了一个简单的带L2 正则化的损失函数定义：
 ~~~
